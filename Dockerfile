@@ -4,6 +4,9 @@ FROM tiangolo/uvicorn-gunicorn:python3.6-alpine3.8
 RUN mkdir -p /home/project/app
 WORKDIR /home/project/app
 
+
+RUN apk add --update apt-get
+
 # Copy and install requirements
 COPY requirements.txt /home/project/app
 # RUN pip install --no-cache-dir -r requirements.txt
