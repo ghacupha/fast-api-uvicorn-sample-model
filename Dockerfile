@@ -1,6 +1,6 @@
 FROM ubuntu:19.10
 
-COPY ./api /api/api
+COPY . /api
 COPY requirements.txt /requirements.txt
 
 RUN apt-get update \
