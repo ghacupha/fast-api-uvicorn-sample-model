@@ -9,7 +9,7 @@ import uvicorn
 from fastapi import FastAPI
 
 # Modeling
-import lightgbm
+# import lightgbm
 
 app = FastAPI()
 
