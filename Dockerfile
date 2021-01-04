@@ -1,21 +1,16 @@
-FROM tiangolo/uvicorn-gunicorn:python3.6-alpine3.8
+FROM ubuntu:19.10
 
-# Make directories suited to your application
-RUN mkdir -p /home/project/app
-WORKDIR /home/project/app
+COPY ./api /api/api
+COPY requirements.txt /requirements.txt
 
-# Copy and install requirements
-COPY requirements.txt /home/project/app
-# RUN pip install --no-cache-dir -r requirements.txt
-RUN apk add --update update && \
-    apk add install -y \
-        build-essential \
-        make \
-        gcc \
-    && pip install -r requirements.txt \
-    && apk remove -y --purge make gcc build-essential \
-    && apk autoremove -y \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install python3-dev python3-pip -y \
+    && pip3 install -r requirements.txt
 
-# Copy contents from your local to your docker container
-COPY . /home/project/app
+ENV PYTHONPATH=/api
+WORKDIR /api
+
+EXPOSE 8000
+
+ENTRYPOINT ["uvicorn"]
+CMD ["api.main:app", "--host", "0.0.0.0"]
