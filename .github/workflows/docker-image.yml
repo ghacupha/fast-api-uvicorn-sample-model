@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT ./
+      run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
