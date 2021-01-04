@@ -16,7 +16,7 @@ app = FastAPI()
 # Initialize logging
 my_logger = logging.getLogger()
 my_logger.setLevel(logging.DEBUG)
-# logging.basicConfig(level=logging.DEBUG, filename='sample.log')
+logging.basicConfig(level=logging.DEBUG, filename='api.log')
 
 # Initialize files
 clf = pickle.load(open('data/model.pickle', 'rb'))
