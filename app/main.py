@@ -5,7 +5,6 @@ import numpy as np
 from pydantic import BaseModel
 
 # Server
-import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
