@@ -13,12 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      steps:
-        - run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
+      - run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
 
-        - uses: docker/login-action@v1
-          with:
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-        - run: docker push ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
+      - run: docker push ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
