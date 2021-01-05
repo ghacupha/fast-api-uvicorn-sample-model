@@ -14,8 +14,7 @@ jobs:
 
     steps:     
       
-      - uses: actions/checkout@v2
-        run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
+      - run: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
 
       - run: docker login --username=$DOCKER_USER --password=$DOCKER_PASS
 
