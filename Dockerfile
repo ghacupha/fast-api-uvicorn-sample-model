@@ -13,7 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy contents from your local to your docker container
 COPY . /home/project/app
 
-# EXPOSE 8000
+EXPOSE 8000
 
-# ENTRYPOINT ["uvicorn"]
+ENTRYPOINT ["uvicorn"]
 # CMD ["api.main:app", "--host", "0.0.0.0"]
+CMD ["home.project.app.main:app"]

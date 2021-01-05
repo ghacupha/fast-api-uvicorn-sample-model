@@ -8,9 +8,6 @@ from pydantic import BaseModel
 import uvicorn
 from fastapi import FastAPI
 
-# Modeling
-# import lightgbm
-
 app = FastAPI()
 
 # Initialize logging
