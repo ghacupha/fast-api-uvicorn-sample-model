@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM tiangolo/uvicorn-gunicorn:python3.6-alpine3.8
 
 COPY . /api
 COPY requirements.txt /requirements.txt
