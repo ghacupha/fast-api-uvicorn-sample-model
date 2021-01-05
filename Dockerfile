@@ -1,12 +1,15 @@
 FROM tiangolo/uvicorn-gunicorn:python3.6-alpine3.8
 
-COPY . /api
-COPY requirements.txt /requirements.txt
+# Make directories suited to your application
+RUN mkdir -p /home/project/app
+WORKDIR /home/project/app
 
+# Copy and install requirements
+COPY requirements.txt /home/project/app
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PYTHONPATH=/api
-WORKDIR /api
+# Copy contents from your local to your docker container
+COPY . /home/project/app
 
 EXPOSE 8000
 
