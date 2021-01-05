@@ -19,6 +19,14 @@ RUN apk add py3-scipy
 # library_dirs = /usr/lib/openblas/lib\n\
 # include_dirs = /usr/lib/openblas/lib'  >> site.cfg 
 
+
+# install openblas
+RUN wget https://github.com/xianyi/OpenBLAS/archive/v0.3.6.tar.gz \
+	&& tar -xf v0.3.6.tar.gz \
+	&& cd OpenBLAS-0.3.6/ \
+	&& make BINARY=64 FC=$(which gfortran) USE_THREAD=1 \
+	&& make PREFIX=/usr/lib/openblas install
+
 # Copy and install requirements
 COPY requirements.txt /app
 RUN pip install --no-cache-dir -r requirements.txt
