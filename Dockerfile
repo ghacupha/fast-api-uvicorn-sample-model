@@ -6,6 +6,19 @@ WORKDIR /app
 
 RUN apk --no-cache add musl-dev linux-headers g++
 
+RUN pip download scipy==1.3
+
+RUN  echo -e '[DEFAULT]\n\
+library_dirs = /usr/lib/openblas/lib\n\
+include_dirs = /usr/lib/openblas/lib\n\n\
+[atlas]\n\
+atlas_libs = openblas\n\
+libraries = openblas\n\n\
+[openblas]\n\
+libraries = openblas\n\
+library_dirs = /usr/lib/openblas/lib\n\
+include_dirs = /usr/lib/openblas/lib'  >> site.cfg 
+
 # Copy and install requirements
 COPY requirements.txt /app
 RUN pip install --no-cache-dir -r requirements.txt
