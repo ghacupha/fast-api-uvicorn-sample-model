@@ -32,6 +32,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build docker image
         uses: docker build . --file Dockerfile --tag ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
+
+      - name: Push docker image
         uses: docker push ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
