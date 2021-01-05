@@ -1,24 +1,12 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-alpine3.10
+FROM python:3.8-stretch
 
 # Make directories suited to your application
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN apk --no-cache add musl-dev linux-headers g++
-
-RUN apk add py3-scipy
-
-# RUN  echo -e '[DEFAULT]\n\
-# library_dirs = /usr/lib/openblas/lib\n\
-# include_dirs = /usr/lib/openblas/lib\n\n\
-# [atlas]\n\
-# atlas_libs = openblas\n\
-# libraries = openblas\n\n\
-# [openblas]\n\
-# libraries = openblas\n\
-# library_dirs = /usr/lib/openblas/lib\n\
-# include_dirs = /usr/lib/openblas/lib'  >> site.cfg 
-
+# install build utilities
+RUN apt-get update && \
+	apt-get install -y gcc make apt-transport-https ca-certificates build-essential
 
 # install openblas
 RUN wget https://github.com/xianyi/OpenBLAS/archive/v0.3.6.tar.gz \
