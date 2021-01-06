@@ -1,0 +1,6 @@
+version: '2'
+services:
+  fast-api-uvicorn:
+    image: ghacupha/fast-api-uvicorn:0.0.1-SNAPSHOT
+    ports:
+      - 8000:8000
