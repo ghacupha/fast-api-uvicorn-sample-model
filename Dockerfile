@@ -6,14 +6,14 @@ WORKDIR /app
 
 # install build utilities
 RUN apt-get update && \
-	apt-get install -y gcc make apt-transport-https ca-certificates build-essential
+	apt-get install -y gcc make apt-utils apt-transport-https ca-certificates build-essential
 
 # install openblas
-RUN wget https://github.com/xianyi/OpenBLAS/archive/v0.3.6.tar.gz \
-	&& tar -xf v0.3.6.tar.gz \
-	&& cd OpenBLAS-0.3.6/ \
-	&& make BINARY=64 FC=$(which gfortran) USE_THREAD=1 \
-	&& make PREFIX=/usr/lib/openblas install
+# RUN wget https://github.com/xianyi/OpenBLAS/archive/v0.3.6.tar.gz \
+# 	&& tar -xf v0.3.6.tar.gz \
+# 	&& cd OpenBLAS-0.3.6/ \
+# 	&& make BINARY=64 FC=$(which gfortran) USE_THREAD=1 \
+# 	&& make PREFIX=/usr/lib/openblas install
 
 # Copy and install requirements
 COPY requirements.txt /app
